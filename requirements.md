@@ -3,13 +3,13 @@ BlockManage - BlockHub Project Manager
 
 ### Requisitos Funcionais
 
-- [ ] Sistema deve possuir cadastro (CRUD) de usuários seguindo a estrutura:
+- [X] Sistema deve possuir cadastro (CRUD) de usuários seguindo a estrutura:
 	{
 		id: (primary) integer,
 		login: (required, unique) string,
 		senha: (required) string
 	}
-- [ ] Sistema deve cadastrar usuário padrão, com login e senha admin
+- [X] Sistema deve cadastrar usuário padrão, com login e senha admin
 - [ ] Sistema deve possuir cadastro (CRUD) de projetos seguindo a estrutura:
 	{
 		id: (primary) integer,

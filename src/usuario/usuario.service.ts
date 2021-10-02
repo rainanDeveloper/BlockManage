@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Usuario } from './usuario.model';
 import { CreateUsuarioDto } from './dtos/createUsuario.dto';
+import { Hashing } from 'src/utils/bcryptHashPassword';
 
 @Injectable()
 export class UsuarioService {
@@ -19,8 +20,12 @@ export class UsuarioService {
 
 	async createUser(usuarioDto: CreateUsuarioDto){
 
+		usuarioDto.senha = await Hashing.hashPassword(usuarioDto.senha)
+
 		return this.usuarioModel.create({
-			login: usuarioDto.login, senha: usuarioDto.senha, status: 1
+			login: usuarioDto.login,
+			senha: usuarioDto.senha,
+			status: 1
 		})
 	}
 }

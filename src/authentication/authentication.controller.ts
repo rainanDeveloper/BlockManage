@@ -5,7 +5,7 @@ import { Usuario } from 'src/usuario/usuario.model';
 import { CreateAuthDto } from './dto/CreateAuthDto';
 import { AuthenticationService } from './authentication.service';
 
-@Controller('authentication')
+@Controller('auth')
 export class AuthenticationController {
 	constructor(@InjectModel(Usuario) private usuarioModel: typeof Usuario, private readonly authService: AuthenticationService) {}
 

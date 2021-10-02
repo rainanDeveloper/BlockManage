@@ -31,10 +31,11 @@ BlockManage - BlockHub Project Manager
 	{
 		id: (primary) integer,
 		projetoId: integer,
-		colaboradorId: integer,
+		colaboradorId: integer,	
 		inicio: date,
 		fim: date,
 	}
+- [ ] Usar autenticação jwt na aplicação (middleware de verificação de bearer token, e endpoint para autenticar)
 
 ### Requisitos Não-funcionais
 

@@ -1,5 +1,5 @@
 import { Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
-import { ApiBody, ApiParam } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiParam } from '@nestjs/swagger';
 import { UsuarioService } from './usuario.service';
 import { CreateUsuarioDto } from './dtos/createUsuario.dto';
 
@@ -8,12 +8,14 @@ export class UsuarioController {
 	constructor(private readonly usuarioService: UsuarioService) {}
 
 	@Get()
+	@ApiBearerAuth()
 	findAll(){
 		return this.usuarioService.findAll()
 	}
 
 	@Get(':id')
 	@ApiParam({name: 'id', required: true, description: 'Identificador numérico do usuário na base de dados', schema: { type: 'integer'}})
+	@ApiBearerAuth()
 	async findOne(@Param('id') id: number){
 		const usuario = await this.usuarioService.findOne(id)
 
@@ -29,6 +31,7 @@ export class UsuarioController {
 		type: CreateUsuarioDto,
 		description: 'Usuário da Api'
 	})
+	@ApiBearerAuth()
 	async create(@Body() usuarioDto: CreateUsuarioDto){
 		return this.usuarioService.createUser(usuarioDto)
 	}

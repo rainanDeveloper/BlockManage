@@ -1,5 +1,5 @@
 import { UsuarioModule } from './usuario/usuario.module';
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -8,6 +8,7 @@ import { Usuario } from './usuario/usuario.model';
 import { UsuarioService } from './usuario/usuario.service';
 import { AuthenticationController } from './authentication/authentication.controller';
 import { AuthenticationService } from './authentication/authentication.service';
+import { AuthenticateMiddleware } from './authentication/authenticate.middleware';
 const config = require("./sequelize/app/config/config")
 
 
@@ -28,6 +29,12 @@ const config = require("./sequelize/app/config/config")
 		}),
   ],
   controllers: [AppController, UsuarioController, AuthenticationController],
-  providers: [AppService, UsuarioService, AuthenticationService],
+  providers: [AppService, UsuarioService, AuthenticationService]
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+	configure(consumer: MiddlewareConsumer) {
+		consumer
+		.apply(AuthenticateMiddleware)
+		.forRoutes(UsuarioController);
+	}	
+}

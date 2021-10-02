@@ -35,7 +35,7 @@ BlockManage - BlockHub Project Manager
 		inicio: date,
 		fim: date,
 	}
-- [ ] Usar autenticação jwt na aplicação (middleware de verificação de bearer token, e endpoint para autenticar)
+- [X] Usar autenticação jwt na aplicação (middleware de verificação de bearer token, e endpoint para autenticar)
 
 ### Requisitos Não-funcionais
 

@@ -8,10 +8,13 @@ async function bootstrap() {
 	const APP_NAME = process.env.npm_package_name
 	const APP_VERSION = process.env.npm_package_version
 
+	app.setGlobalPrefix('/api')
+
 	const options = new DocumentBuilder()
 		.setTitle(APP_NAME)
 		.setDescription("BlockHub Project Manager")
 		.setVersion(APP_VERSION)
+		.addBearerAuth()
 		.build()
 	const document = SwaggerModule.createDocument(app, options)
 	SwaggerModule.setup('swagger', app, document)

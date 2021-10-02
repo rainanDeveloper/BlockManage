@@ -1,5 +1,5 @@
 import { Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
-import { ApiBody, ApiParam, ApiProperty } from '@nestjs/swagger';
+import { ApiBody, ApiParam } from '@nestjs/swagger';
 import { UsuarioService } from './usuario.service';
 import { CreateUsuarioDto } from './dtos/createUsuario.dto';
 
@@ -18,7 +18,7 @@ export class UsuarioController {
 		const usuario = await this.usuarioService.findOne(id)
 
 		if(!usuario){
-			throw new NotFoundException('User not found!')
+			throw new NotFoundException('Usuário não encontrado!')
 		}
 
 		return usuario

@@ -1,5 +1,7 @@
 import * as jwt from 'jsonwebtoken'
-import crypto from 'crypto'
+import * as crypto from 'crypto'
+
+const defaultSecret = crypto.randomBytes(64).toString('base64')
 
 export class JWT {
 
@@ -8,7 +10,7 @@ export class JWT {
 
     public _constructor(secret?: string, expiration?: string){
         if(!secret){
-            this.secret = process.env.JWT_SECRET || crypto.randomBytes(64).toString('hex')
+            this.secret = process.env.JWT_SECRET || defaultSecret
         }
         else{
             this.secret = secret
@@ -32,7 +34,7 @@ export class JWT {
     
     public static staticGenerateToken(data){
 
-        const secret: string = process.env.JWT_SECRET || crypto.randomBytes(64).toString('hex')
+        const secret: string = process.env.JWT_SECRET || defaultSecret
         const expiration: string = process.env.JWT_EXPIRATION || '1d'
 
         if(!data){
@@ -43,7 +45,7 @@ export class JWT {
     }
 
     public static staticTokenValidation(token: string){
-        const secret: string = process.env.JWT_SECRET || crypto.randomBytes(64).toString('hex')
+        const secret: string = process.env.JWT_SECRET || defaultSecret
 
         if(!token){
             throw new Error("Não é possível criar token JWT sem informar dados")

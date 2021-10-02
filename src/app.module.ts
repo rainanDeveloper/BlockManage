@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { UsuarioController } from './usuario/usuario.controller';
 import { Usuario } from './usuario/usuario.model';
 import { UsuarioService } from './usuario/usuario.service';
+import { AuthenticationController } from './authentication/authentication.controller';
+import { AuthenticationService } from './authentication/authentication.service';
 const config = require("./sequelize/app/config/config")
 
 
@@ -25,7 +27,7 @@ const config = require("./sequelize/app/config/config")
 			],
 		}),
   ],
-  controllers: [AppController, UsuarioController],
-  providers: [AppService, UsuarioService],
+  controllers: [AppController, UsuarioController, AuthenticationController],
+  providers: [AppService, UsuarioService, AuthenticationService],
 })
 export class AppModule {}

@@ -8,6 +8,7 @@
 			"type": "pwa-node",
 			"request": "launch",
 			"name": "Dev Debug",
+			"console": "integratedTerminal",
 			"skipFiles": [
 				"<node_internals>/**"
 			],

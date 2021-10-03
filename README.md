@@ -1,73 +1,50 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+BlockManage - BlockHub Project Manager
+--------------------------------------
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+### Descrição
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Este é o projeto do Desafio tech da BlockHub para backend: uma api rest desenvolvida com NestJs
 
-## Description
+### Requisitos
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A aplicação para ser instalada precisa das seguintes aplicações
 
-## Installation
+- node.js
+- npm/yarn
+
+### Instalação
+
+É necessário inicialmente instalar as dependências do node na aplicação, para isso, basta rodar:
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+Caso possua instalado o yarn:
 
 ```bash
-# development
+$ yarn install
+```
+
+Com isso feito, é preciso instalar a base de dados da aplicação, e isso pode ser feito com ao rodar:
+
+```bash
+$ yarn db:migrate
+```
+
+Caso não tenha o arquivo de ambiente `.env` dentro da pasta raiz, a aplicação será iniciada com os valores padrão da base de dados, criando um arquivo SQLite `database/database.sqlite` dentro da pasta raiz. É possível configurar a aplicação atraves do arquivo `.env`, como é explicado na seção _Configurando a aplicação_.
+
+Caso tenha configurado uma base que não seja SQLite (MySQL, PostgreSQL, etc) é necessário rodar o script `db:create` antes de rodar o `db:migrate` para que a base de dados configurada seja criada antes de tentar criar as tabelas e inserir informações.
+
+### Rodando a aplicação
+
+```bash
+# Ambiente de desenvolvimento
 $ npm run start
 
-# watch mode
+# Ambiente de desenvolvimento em watch mode
 $ npm run start:dev
 
-# production mode
+# Ambiente de produção
 $ npm run start:prod
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).

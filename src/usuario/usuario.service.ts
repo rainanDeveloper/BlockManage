@@ -18,7 +18,7 @@ export class UsuarioService {
 		return this.usuarioModel.findByPk(id)
 	}
 
-	async createUser(usuarioDto: CreateUsuarioDto){
+	async createUsuario(usuarioDto: CreateUsuarioDto){
 
 		usuarioDto.senha = await Hashing.hashPassword(usuarioDto.senha)
 

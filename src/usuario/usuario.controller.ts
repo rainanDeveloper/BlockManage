@@ -33,7 +33,7 @@ export class UsuarioController {
 	})
 	@ApiBearerAuth()
 	async create(@Body() usuarioDto: CreateUsuarioDto){
-		return this.usuarioService.createUser(usuarioDto)
+		return this.usuarioService.createUsuario(usuarioDto)
 	}
 	
 }

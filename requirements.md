@@ -19,7 +19,7 @@ BlockManage - BlockHub Project Manager
 		fim: date,
 		status: integer
 	}
-- [ ] Sistema deve possuir cadastro (CRUD) de colaboradores seguindo a estrutura:
+- [X] Sistema deve possuir cadastro (CRUD) de colaboradores seguindo a estrutura:
 	{
 		id: (primary) integer,
 		nome: (required) string,

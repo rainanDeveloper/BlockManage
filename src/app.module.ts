@@ -15,6 +15,8 @@ import { ProjetosService } from './projetos/projetos.service';
 import { Projeto } from './projetos/projetos.model';
 import { ColaboradoresController } from './colaboradores/colaboradores.controller';
 import { ColaboradoresService } from './colaboradores/colaboradores.service';
+import { ColaboradorProjetoController } from './colaborador-projeto/colaborador-projeto.controller';
+import { ColaboradorProjetoService } from './colaborador-projeto/colaborador-projeto.service';
 const config = require("./sequelize/app/config/config")
 
 
@@ -36,8 +38,8 @@ const config = require("./sequelize/app/config/config")
 			],
 		}),
   ],
-  controllers: [AppController, UsuarioController, AuthenticationController, ProjetosController, ColaboradoresController],
-  providers: [AppService, UsuarioService, AuthenticationService, ProjetosService, ColaboradoresService]
+  controllers: [AppController, UsuarioController, AuthenticationController, ProjetosController, ColaboradoresController, ColaboradorProjetoController],
+  providers: [AppService, UsuarioService, AuthenticationService, ProjetosService, ColaboradoresService, ColaboradorProjetoService]
 })
 export class AppModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {

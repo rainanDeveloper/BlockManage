@@ -26,5 +26,19 @@ export class ProjetosService {
             status: projetoDto.status
         })
     }
+
+    async deleteProjeto(id: number){
+        const projeto = await this.projetoModel.findByPk(id)
+
+        if(!projeto){
+            throw new Error("Erro ao buscar projeto!")
+        }
+
+        projeto.destroy()
+
+        return {
+            message: 'Projeto deletado com sucesso!'
+        }
+    }
     
 }

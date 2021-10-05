@@ -1,7 +1,7 @@
 import { AutoIncrement, Model, Column, PrimaryKey, Table } from "sequelize-typescript"
 
 @Table({tableName:'colaborador'})
-export class Projeto extends Model {
+export class Colaborador extends Model {
 
 	@PrimaryKey
 	@AutoIncrement

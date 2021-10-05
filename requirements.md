@@ -10,7 +10,7 @@ BlockManage - BlockHub Project Manager
 		senha: (required) string
 	}
 - [X] Sistema deve cadastrar usuário padrão, com login e senha admin
-- [ ] Sistema deve possuir cadastro (CRUD) de projetos seguindo a estrutura:
+- [X] Sistema deve possuir cadastro (CRUD) de projetos seguindo a estrutura:
 	{
 		id: (primary) integer,
 		nome: (required) string,

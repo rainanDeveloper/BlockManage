@@ -1,3 +1,4 @@
+import { ProjetosModule } from './projetos/projetos.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
@@ -11,11 +12,13 @@ import { AuthenticationService } from './authentication/authentication.service';
 import { AuthenticateMiddleware } from './authentication/authenticate.middleware';
 import { ProjetosController } from './projetos/projetos.controller';
 import { ProjetosService } from './projetos/projetos.service';
+import { Projeto } from './projetos/projetos.model';
 const config = require("./sequelize/app/config/config")
 
 
 @Module({
   imports: [
+        ProjetosModule, 
         UsuarioModule, 
 		SequelizeModule.forRoot({
 			dialect: config.dialect,
@@ -26,7 +29,8 @@ const config = require("./sequelize/app/config/config")
 			database: config.database,
 			storage: config.storage,
 			models: [
-				Usuario
+				Usuario,
+				Projeto
 			],
 		}),
   ],

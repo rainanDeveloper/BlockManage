@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Projeto } from './projetos.model';
+import { CreateProjetoDto } from './dtos/CreateProjeto.dto';
 
 @Injectable()
 export class ProjetosService {
@@ -16,7 +17,14 @@ export class ProjetosService {
         return this.projetoModel.findByPk(id)
     }
 
-    async createProjeto(){
-        
+    async create(projetoDto: CreateProjetoDto){
+        return this.projetoModel.create({
+            nome: projetoDto.nome,
+            descricao: projetoDto.descricao,
+            inicio: projetoDto.inicio,
+            fim: projetoDto.fim,
+            status: projetoDto.status
+        })
     }
+    
 }

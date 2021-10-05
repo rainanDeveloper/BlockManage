@@ -1,6 +1,7 @@
-import { Controller, Get, NotFoundException, Param } from '@nestjs/common';
-import { ApiBearerAuth, ApiParam } from '@nestjs/swagger';
+import { Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
+import { ApiBearerAuth, ApiBody, ApiParam } from '@nestjs/swagger';
 import { ProjetosService } from './projetos.service';
+import { CreateProjetoDto } from './dtos/CreateProjeto.dto';
 
 @Controller('projetos')
 export class ProjetosController {
@@ -19,10 +20,20 @@ export class ProjetosController {
 		const projeto = await this.projetoService.findOne(id)
 
 		if(!projeto){
-			throw new NotFoundException('Usuário não encontrado!')
+			throw new NotFoundException(`Projeto ${id} não encontrado!`)
 		}
 
 		return projeto
+	}
+
+	@Post()
+	@ApiBody({
+		type: CreateProjetoDto,
+		description: 'Estrutura JSON do Projeto'
+	})
+	@ApiBearerAuth()
+	async create(@Body() projetoDto: CreateProjetoDto){
+		return this.projetoService.create(projetoDto)
 	}
 
 }

@@ -49,6 +49,6 @@ export class AppModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {
 		consumer
 		.apply(AuthenticateMiddleware)
-		.forRoutes(UsuarioController);
+		.forRoutes(UsuarioController, ProjetosController, ColaboradoresController, ProjetoColaboradorController);
 	}	
 }

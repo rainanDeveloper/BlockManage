@@ -1,3 +1,4 @@
+import { ColaboradoresModule } from './colaboradores/colaboradores.module';
 import { ProjetosModule } from './projetos/projetos.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
@@ -15,14 +16,16 @@ import { ProjetosService } from './projetos/projetos.service';
 import { Projeto } from './projetos/projetos.model';
 import { ColaboradoresController } from './colaboradores/colaboradores.controller';
 import { ColaboradoresService } from './colaboradores/colaboradores.service';
-import { ColaboradorProjetoController } from './colaborador-projeto/colaborador-projeto.controller';
-import { ColaboradorProjetoService } from './colaborador-projeto/colaborador-projeto.service';
+import { ProjetoColaboradorController } from './projeto-colaborador/projeto-colaborador.controller';
+import { ProjetoColaboradorService } from './projeto-colaborador/projeto-colaborador.service';
+import { Colaborador } from './colaboradores/colaboradores.model';
 const config = require("./sequelize/app/config/config")
 
 
 @Module({
   imports: [
-        ProjetosModule, 
+        ColaboradoresModule, 
+        ProjetosModule,
         UsuarioModule, 
 		SequelizeModule.forRoot({
 			dialect: config.dialect,
@@ -34,12 +37,13 @@ const config = require("./sequelize/app/config/config")
 			storage: config.storage,
 			models: [
 				Usuario,
-				Projeto
+				Projeto,
+				Colaborador
 			],
 		}),
   ],
-  controllers: [AppController, UsuarioController, AuthenticationController, ProjetosController, ColaboradoresController, ColaboradorProjetoController],
-  providers: [AppService, UsuarioService, AuthenticationService, ProjetosService, ColaboradoresService, ColaboradorProjetoService]
+  controllers: [AppController, UsuarioController, AuthenticationController, ProjetosController, ColaboradoresController, ProjetoColaboradorController],
+  providers: [AppService, UsuarioService, AuthenticationService, ProjetosService, ColaboradoresService, ProjetoColaboradorService]
 })
 export class AppModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {

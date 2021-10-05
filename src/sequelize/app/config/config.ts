@@ -1,5 +1,5 @@
-import * as dotenv from 'dotenv'
-import * as path from 'path'
+const dotenv = require('dotenv')
+const path = require('path')
 
 dotenv.config()
 

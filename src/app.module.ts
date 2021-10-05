@@ -13,6 +13,8 @@ import { AuthenticateMiddleware } from './authentication/authenticate.middleware
 import { ProjetosController } from './projetos/projetos.controller';
 import { ProjetosService } from './projetos/projetos.service';
 import { Projeto } from './projetos/projetos.model';
+import { ColaboradoresController } from './colaboradores/colaboradores.controller';
+import { ColaboradoresService } from './colaboradores/colaboradores.service';
 const config = require("./sequelize/app/config/config")
 
 
@@ -34,8 +36,8 @@ const config = require("./sequelize/app/config/config")
 			],
 		}),
   ],
-  controllers: [AppController, UsuarioController, AuthenticationController, ProjetosController],
-  providers: [AppService, UsuarioService, AuthenticationService, ProjetosService]
+  controllers: [AppController, UsuarioController, AuthenticationController, ProjetosController, ColaboradoresController],
+  providers: [AppService, UsuarioService, AuthenticationService, ProjetosService, ColaboradoresService]
 })
 export class AppModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {

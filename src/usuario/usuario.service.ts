@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Usuario } from './usuario.model';
 import { CreateUsuarioDto } from './dtos/createUsuario.dto';
 import { Hashing } from './../utils/bcryptHashPassword';
+import { UpdateUsuarioDto } from './dtos/UpdateUsuario.dto';
 
 @Injectable()
 export class UsuarioService {
@@ -27,6 +28,21 @@ export class UsuarioService {
 			senha: usuarioDto.senha,
 			status: 1
 		})
+	}
+
+	async updateUsuario(id: number, usuarioDto: UpdateUsuarioDto){
+		const usuario = await this.usuarioModel.findByPk(id)
+
+		if(!usuario){
+			throw new Error("Erro ao buscar usuário!")
+		}
+
+		usuario.login = usuarioDto.login
+		usuario.senha = await Hashing.hashPassword(usuarioDto.senha)
+
+		await usuario.save()
+
+		return usuario
 	}
 
 	async deleteUsuario(id: number){

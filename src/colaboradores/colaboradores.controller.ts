@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, InternalServerErrorException, NotFoundException, Param, Post, BadRequestException } from '@nestjs/common';
+import { Body, Controller, Delete, Get, InternalServerErrorException, NotFoundException, Param, Post, BadRequestException, Put } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiParam } from '@nestjs/swagger';
 import { ColaboradoresService } from './colaboradores.service';
 import { CreateColaboradorDto } from './dtos/CreateColaborador.dto';
@@ -34,6 +34,22 @@ export class ColaboradoresController {
 	@ApiBearerAuth()
 	async create(@Body() colaboradorDto: CreateColaboradorDto){
 		return this.colaboradorService.createColaborador(colaboradorDto)
+	}
+
+	@Put(':id')
+	@ApiParam({name: 'id', required: true, description: 'Identificador numérico do colaborador na base de dados', schema: { type: 'integer'}})
+	@ApiBody({
+		type: CreateColaboradorDto,
+		description: 'Estrutura JSON dos atributos do Colaborador'
+	})
+	@ApiBearerAuth()
+	async update(@Param('id') id: number, @Body() colaboradorDto: CreateColaboradorDto){
+		try{
+			return this.colaboradorService.updateColaborador(id, colaboradorDto)
+		}
+		catch(error){
+			return new BadRequestException(error.message)
+		}
 	}
 
 	@Delete(':id')

@@ -17,6 +17,9 @@ export class Colaborador extends Model {
 	@Column
     admissao: Date
 
+	@Column
+	status: number
+
 	@Column({
 		field: 'created_at'
 	})

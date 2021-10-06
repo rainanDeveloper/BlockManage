@@ -26,6 +26,23 @@ export class ColaboradoresService {
         })
     }
 
+    async updateColaborador(id: number, colaboradorDto: CreateColaboradorDto){
+        const colaborador = await this.colaboradorModel.findByPk(id)
+
+        if(!colaborador){
+            throw new Error("Erro ao buscar colaborador!")
+        }
+
+        colaborador.nome = colaboradorDto.nome
+        colaborador.cargo = colaboradorDto.cargo
+        colaborador.admissao = colaboradorDto.admissao
+        colaborador.status = colaboradorDto.status
+
+        await colaborador.save()
+
+        return colaborador
+    }
+
     async deleteColaborador(id: number){
         const colaborador = await this.colaboradorModel.findByPk(id)
 

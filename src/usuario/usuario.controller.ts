@@ -1,4 +1,4 @@
-import { Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, NotFoundException, Param, Post, BadRequestException } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiParam } from '@nestjs/swagger';
 import { UsuarioService } from './usuario.service';
 import { CreateUsuarioDto } from './dtos/createUsuario.dto';
@@ -34,6 +34,18 @@ export class UsuarioController {
 	@ApiBearerAuth()
 	async create(@Body() usuarioDto: CreateUsuarioDto){
 		return this.usuarioService.createUsuario(usuarioDto)
+	}
+
+	@Delete(':id')
+	@ApiParam({name: 'id', required: true, description: 'Identificador numérico do usuário na base de dados', schema: { type: 'integer'}})
+	@ApiBearerAuth()
+	async delete(@Param('id') id: number){
+		try{
+			return this.usuarioService.deleteUsuario(id)
+		}
+		catch(error){
+			throw new BadRequestException(error.message)
+		}
 	}
 	
 }

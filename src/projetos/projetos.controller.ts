@@ -45,7 +45,7 @@ export class ProjetosController {
 		return this.projetoService.create(projetoDto)
 	}
 
-	@Delete()
+	@Delete(':id')
 	@ApiParam({name: 'id', required: true, description: 'Identificador numérico do projeto na base de dados', schema: { type: 'integer'}})
 	@ApiBearerAuth()
 	async delete(@Param('id') id: number){

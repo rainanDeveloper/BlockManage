@@ -28,4 +28,18 @@ export class UsuarioService {
 			status: 1
 		})
 	}
+
+	async deleteUsuario(id: number){
+		const usuario = await this.usuarioModel.findByPk(id)
+
+		if(!usuario){
+			throw new Error("Erro ao buscar usuário!")
+		}
+
+		usuario.destroy()
+
+		return {
+			message: 'Usuário deletado com sucesso!'
+		}
+	}
 }

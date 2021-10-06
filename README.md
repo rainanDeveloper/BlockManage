@@ -23,7 +23,7 @@ $ npm install
 Com isso feito, é preciso instalar a base de dados da aplicação, e isso pode ser feito com ao rodar:
 
 ```bash
-$ npm run db:migrate
+$ npm run db:migrate && npm run db:seed
 ```
 
 Caso não tenha o arquivo de ambiente `.env` dentro da pasta raiz, a aplicação será iniciada com os valores padrão da base de dados, criando um arquivo SQLite `database/database.sqlite` dentro da pasta raiz. É possível configurar a aplicação atraves do arquivo `.env`, como é explicado na seção [_Configurando a aplicação_](#configurando-a-aplicação).

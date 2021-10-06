@@ -36,7 +36,7 @@ export class ColaboradoresController {
 		return this.colaboradorService.createColaborador(colaboradorDto)
 	}
 
-	@Delete()
+	@Delete(':id')
 	@ApiParam({name: 'id', required: true, description: 'Identificador numérico do colaborador na base de dados', schema: { type: 'integer'}})
 	@ApiBearerAuth()
 	async delete(@Param('id') id: number){

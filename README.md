@@ -60,3 +60,14 @@ Caso exista o arquivo `.env` dentro da pasta raiz, ele será utilizado para conf
 - `JWT_EXPIRATION`: Variável de perído de expiração do token JWT na aplicação
 
 A alteração dos valores no arquivo implicam que é necessário reiniciar aplicação para que estes valores novos sejam usados pela mesma. Caso seja alterado valores referentes ao banco de dados é uma boa prática rodar o script de migração (`npm run db:migrate`). Caso seja a primeira vez rodando a aplicação, é bom rodar o script de inicialização da base de dados (`npm run db:init`, caso não seja SQLite, ou simplesmente `npm run db:migrate && npm run db:seed` caso a base já exista ou seja SQLite).
+
+### Acessando aplicação
+
+Após rodar as `seeds` da aplicação, será criado um usuário padrão na aplicação, cujo tanto o login quanto a senha são o valor padrão `admin`.
+
+É necessário que um token JWT válido seja informado em todos os endpoints da aplicação, no header http `Authorization`, seguindo a estrutura `Bearer {token}` , exceto os seguintes endpoints:
+- GET `/api`: Health Check da aplicação, que quando está rodando exibe apenas um valor padrão na resposta
+- POST `/api/auth`: endpoint onde é possível enviar as credenciais do usuário e receber de vlta o token de autenticação
+- GET `/api/auth/{token}`: enpoint onde é possível checar a validade de determinado token
+
+Testando a aplicação pela interface do swagger(`/swagger`), é possível cadastrar o token de autorização no botão `Authorize`, que enviará o token seguindo o padrão descrito acima.

@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, NotFoundException, Param, Post } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiParam } from '@nestjs/swagger';
 import { ProjetoColaboradorService } from './projeto-colaborador.service';
 import { CreateProjetoColaboradorDto } from './dtos/CreateProjetoColaborador.dto';
@@ -78,6 +78,18 @@ export class ProjetoColaboradorController {
 			return this.projetoColaboradorService.create(projetoColaboradorDto)
 		}
 
+	}
+	
+	@Delete(':id')
+	@ApiParam({name: 'id', required: true, description: 'Identificador numérico do vínculo entre projeto e colaborador na na base de dados', schema: { type: 'integer'}})
+	@ApiBearerAuth()
+	async delete(@Param('id') id: number){
+		try{
+			return this.projetoColaboradorService.delete(id)
+		}
+		catch(error){
+			throw new BadRequestException(error.message)
+		}
 	}
 
 }

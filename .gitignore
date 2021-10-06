@@ -18,6 +18,12 @@ lerna-debug.log*
 # OS
 .DS_Store
 
+# database file
+
+database/*
+
+**/*.sqlite
+
 # Tests
 /coverage
 /.nyc_output

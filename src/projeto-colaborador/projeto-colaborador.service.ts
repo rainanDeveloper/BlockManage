@@ -17,7 +17,7 @@ export class ProjetoColaboradorService {
 		return this.projetoColaboradorModel.findByPk(id)
 	}
 
-
+	
 	
 	async delete(id: number){
 		const projetoColaborador = await this.projetoColaboradorModel.findByPk(id)

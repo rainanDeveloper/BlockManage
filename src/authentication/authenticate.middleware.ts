@@ -47,7 +47,7 @@ export class AuthenticateMiddleware implements NestMiddleware {
 			next();
 		}
 		catch(error){
-			throw new BadRequestException(error)
+			throw new BadRequestException(error.message||'Erro na autenticação do token')
 		}
 
 	}

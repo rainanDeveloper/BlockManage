@@ -46,6 +46,6 @@ BlockManage - BlockHub Project Manager
 
 ### Regras de negócio
 
-- [ ] Não deve ser possível cadastrar projetos com data de inicio maior ou igual à data de fim, caso exista data de fim
+- [X] Não deve ser possível cadastrar projetos com data de inicio maior ou igual à data de fim, caso exista data de fim
 - [ ] Não deve ser possível cadastrar relacionamento entre colaboradores e projetos com data de inicio maior ou igual à data de fim
 - [ ] Não deve ser possível cadastrar relacionamento entre colaboradores e projetos em que haja interseção dos períodos (datas) de dois projetos diferentes para o mesmo colaborador

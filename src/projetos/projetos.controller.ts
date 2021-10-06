@@ -33,6 +33,15 @@ export class ProjetosController {
 	})
 	@ApiBearerAuth()
 	async create(@Body() projetoDto: CreateProjetoDto){
+
+		if(!projetoDto.inicio){
+			throw new BadRequestException("Você deve especificar uma data de início para o projeto!")
+		}
+
+		if(projetoDto.fim && projetoDto.inicio>=projetoDto.fim){
+			throw new BadRequestException("Data de início do projeto não pode ser maior que data de fim!")
+		}
+
 		return this.projetoService.create(projetoDto)
 	}
 
@@ -44,7 +53,7 @@ export class ProjetosController {
 			return this.projetoService.deleteProjeto(id)
 		}
 		catch(error){
-			return new BadRequestException(error.message)
+			throw new BadRequestException(error.message)
 		}
 	}
 }

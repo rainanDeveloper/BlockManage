@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Delete, Get, NotFoundException, Param, Post } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, NotFoundException, Param, Post, Put } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiParam } from '@nestjs/swagger';
 import { ProjetosService } from './projetos.service';
 import { CreateProjetoDto } from './dtos/CreateProjeto.dto';
@@ -43,6 +43,23 @@ export class ProjetosController {
 		}
 
 		return this.projetoService.create(projetoDto)
+	}
+
+	@Put(':id')
+	@ApiParam({name: 'id', required: true, description: 'Identificador numérico do projeto na base de dados', schema: { type: 'integer'}})
+	@ApiBody({
+		type: CreateProjetoDto,
+		description: 'Estrutura JSON dos atributos do Projeto'
+	})
+	@ApiBearerAuth()
+	async update(@Param('id') id: number, @Body() projetoDto: CreateProjetoDto){
+		try{
+
+			return this.projetoService.update(id, projetoDto)
+		}
+		catch(error){
+			throw new BadRequestException(error.message)
+		}
 	}
 
 	@Delete(':id')

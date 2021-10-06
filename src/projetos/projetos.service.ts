@@ -27,6 +27,22 @@ export class ProjetosService {
 		})
 	}
 
+	async update(id: number, projetoDto: CreateProjetoDto){
+		const projeto = await this.projetoModel.findByPk(id)
+
+		if(!projeto){
+			throw new Error("Erro ao buscar projeto!")
+		}
+
+		projeto.nome = projetoDto.nome
+		projeto.descricao = projetoDto.descricao
+		projeto.status = projetoDto.status
+
+		await projeto.save()
+
+		return projeto
+	}
+
 	async deleteProjeto(id: number){
 		const projeto = await this.projetoModel.findByPk(id)
 

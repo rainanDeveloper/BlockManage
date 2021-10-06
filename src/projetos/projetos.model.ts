@@ -20,6 +20,9 @@ export class Projeto extends Model {
 	@Column
 	fim: Date
 
+	@Column
+	status: number
+
 	@Column({
 		field: 'created_at'
 	})

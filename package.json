@@ -23,6 +23,7 @@
     "db:migrate": "ts-node node_modules/.bin/sequelize db:migrate",
     "db:drop": "ts-node node_modules/.bin/sequelize db:migrate:undo:all",
     "db:seed": "ts-node node_modules/.bin/sequelize db:seed:all",
+    "db:init": "yarn db:create && yarn db:migrate && yarn db:seed",
     "db:reset": "yarn db:drop && yarn db:migrate && yarn db:seed"
   },
   "dependencies": {

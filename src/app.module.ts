@@ -1,3 +1,4 @@
+import { ProjetoColaboradorModule } from './projeto-colaborador/projeto-colaborador.module';
 import { ColaboradoresModule } from './colaboradores/colaboradores.module';
 import { ProjetosModule } from './projetos/projetos.module';
 import { UsuarioModule } from './usuario/usuario.module';
@@ -19,11 +20,13 @@ import { ColaboradoresService } from './colaboradores/colaboradores.service';
 import { ProjetoColaboradorController } from './projeto-colaborador/projeto-colaborador.controller';
 import { ProjetoColaboradorService } from './projeto-colaborador/projeto-colaborador.service';
 import { Colaborador } from './colaboradores/colaboradores.model';
+import { ProjetoColaborador } from './projeto-colaborador/projeto-colaborador.model';
 const config = require("./sequelize/app/config/config")
 
 
 @Module({
   imports: [
+        ProjetoColaboradorModule, 
         ColaboradoresModule, 
         ProjetosModule,
         UsuarioModule, 
@@ -38,7 +41,8 @@ const config = require("./sequelize/app/config/config")
 			models: [
 				Usuario,
 				Projeto,
-				Colaborador
+				Colaborador,
+				ProjetoColaborador
 			],
 		}),
   ],

@@ -38,6 +38,6 @@ export class ProjetoColaborador extends Model {
 	@Column({
 		field: 'updated_at'
 	})
-	upDatedAt: Date
+	updatedAt: Date
 
 }
